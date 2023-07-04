@@ -31,4 +31,8 @@ export class Entier {
 
         return new Entier(valeurRéduiteNonSignée);
     }
+
+    EstZéro() {
+        return this._valeur == 0;
+    }
 }
