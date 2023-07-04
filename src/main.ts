@@ -1,6 +1,6 @@
 import './style.css'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-  </div>
-`
+import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App).mount('#app')
