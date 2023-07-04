@@ -1,4 +1,4 @@
-import {Rover} from "./rover.ts";
+import {RoverView} from "./roverView.ts";
 import {RoverInterface} from "./rover.interface.ts";
 import {CommandeRover} from "./commande/CommandeRover.ts";
 
@@ -13,19 +13,19 @@ export class InterpréteurRover implements RoverInterface {
         return new InterpréteurRover(commande.ExécuterSur(this._rover));
     }
 
-    public Avancer(): Rover {
+    public Avancer(): RoverView {
         return this._rover.Avancer();
     }
 
-    Reculer(): Rover {
+    Reculer(): RoverView {
         return this._rover.Reculer();
     }
 
-    TourneADroite(): Rover {
+    TourneADroite(): RoverView {
         return this._rover.TourneADroite();
     }
 
-    TourneAGauche(): Rover {
+    TourneAGauche(): RoverView {
         return this._rover.TourneAGauche();
     }
 }
