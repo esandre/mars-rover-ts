@@ -44,5 +44,17 @@ npm run dev
 - `q` : Tourner à anti-horaire
 - `d` : Tourner à horaire
 
+## Captures d'écran et vidéos
+
+### Schéma d'architecture imaginé
+
+![Architecture](./assets/architecture.jpg)
+
+### Gameplay
+
+
+
+
+
 
 
