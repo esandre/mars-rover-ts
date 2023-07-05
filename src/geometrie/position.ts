@@ -27,7 +27,7 @@ export class Position {
     }
 
     private AllerADestinationSaufObstacle(pointDestination: Point) : Position{
-        const pointFinal = this._planète.SelonAccessibilité(this._point,
+        const pointFinal = this._planète.SelonAccessibilité(pointDestination,
             () => this._point,
             () => pointDestination
         );

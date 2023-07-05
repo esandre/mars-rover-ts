@@ -31,4 +31,8 @@ export class Entier {
 
         return new Entier(valeurRéduiteNonSignée);
     }
+
+    public equals(other: Entier): boolean {
+        return this._valeur === other._valeur
+    }
 }
