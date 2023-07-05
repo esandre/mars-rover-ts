@@ -45,6 +45,10 @@ export class PlanèteToroïdaleVide implements Planète {
     this.revealedObstacles = [];
   }
 
+  getRevealedObstacles() {
+    return this.revealedObstacles;
+  }
+
   Normaliser(point: Point): Point {
     return point.Modulo2D(this._pointMax);
   }
@@ -78,6 +82,9 @@ class ObstacleDecorator implements Planète {
   public constructor(decorated: Planète, obstacle: Point) {
     this._decorated = decorated;
     this._obstacle = obstacle;
+  }
+  getRevealedObstacles(): Point[] {
+    return this._decorated.getRevealedObstacles();
   }
 
   private EstAccessible(point: Point): boolean {

@@ -9,8 +9,6 @@ export class Console {
     public constructor(planeteTaille: Entier, obstables: Point[]) {
         this.obstables = obstables;
         this.planete_taille = planeteTaille;
-
-        console.log(this.obstables);
     }
     public DisplayMap(rover : any) {
         this.map = "";
@@ -25,6 +23,8 @@ export class Console {
             rover_lng = rover_pos.getLng().getValue();
             rover_orientation = rover.getOrientation().toString();
         }
+
+        console.log(this.obstables);
 
         for (let i = this.planete_taille.getValue() - 1; i >= 0; i--) {
             this.map += "\n";
@@ -44,7 +44,25 @@ export class Console {
                             this.map += "◄";
                             break;
                     }
-                } else this.map += "-";
+                } else {
+
+                    let obstable = false;
+
+                    for (let o = 0; o < this.obstables.length; o++) {
+                        const obs_pos = this.obstables[o];
+                        const obs_lat = obs_pos.getLat().getValue();
+                        const obs_lng = obs_pos.getLng().getValue();
+
+                        if (y === obs_lng && i === obs_lat) {
+                            obstable = true;
+                            this.map += "o";
+                            continue;
+                        }
+                    }
+
+                    if(!obstable)
+                        this.map += "-";
+                }
             }
         }
         return this.map;

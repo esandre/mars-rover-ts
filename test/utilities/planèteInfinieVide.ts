@@ -13,4 +13,8 @@ export class PlanèteInfinieVide implements Planète {
     RévélerObstacle(obstacleCoordinates: Point) {
         return [];
     }
+
+    getRevealedObstacles() {
+        return [];
+    }
 }

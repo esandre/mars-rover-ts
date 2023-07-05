@@ -12,8 +12,9 @@ const sizePlanete = new Entier(6);
 const planète = new PlaneteBuilder()
   .DeTaille(sizePlanete.getValue())
   .AyantUnObstacleAuxCoordonnees(3, 3)
+  .AyantUnObstacleAuxCoordonnees(5, 3)
   .Build();
-const consoleDisplay = new Console(sizePlanete, []);
+const consoleDisplay = new Console(sizePlanete, planète.getRevealedObstacles());
 console.log('SERVER STARTED');
 wss.on('connection', function connection(ws) {
   ws.on('error', console.error);
@@ -31,7 +32,7 @@ wss.on('connection', function connection(ws) {
   ws.send(consoleDisplay.DisplayMap(false));
 
   ws.on('message', function message(data) {
-    if(data === "init")
+    if(data.toString() === "init")
       ws.send(consoleDisplay.DisplayMap(false));
     console.log('received: %s', data);
 
