@@ -58,7 +58,7 @@ class ObstacleDecorator implements Planète {
 
     private EstAccessible(point: Point): boolean {
         const positionNormalisée = this.Normaliser(point);
-        return positionNormalisée.Equals(this._obstacle);
+        return !positionNormalisée.Equals(this._obstacle);
     }
 
     public Normaliser(position: Point): Point {
