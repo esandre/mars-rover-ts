@@ -1,7 +1,7 @@
 import {Orientations, Orientation} from "../../src/topologie/orientations";
 import {Position} from "../../src/geometrie/position";
 import {PositionBuilder} from "./position.builder";
-import {Rover} from "../../src/rover/rover";
+import {RoverWithState} from "../../src/rover/roverWithState";
 
 export class RoverBuilder {
 
@@ -18,7 +18,7 @@ export class RoverBuilder {
         return this;
     }
 
-    Build(): Rover {
-        return new Rover(this._orientation, this._position);
+    Build(): RoverWithState {
+        return new RoverWithState(this._orientation, this._position);
     };
 }

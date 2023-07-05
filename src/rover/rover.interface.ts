@@ -1,8 +1,8 @@
-import {Rover} from "./rover.ts";
+import {RoverWithState} from "./roverWithState.ts";
 
 export interface RoverInterface {
-    TourneADroite() : Rover;
-    TourneAGauche(): Rover;
-    Avancer() : Rover;
-    Reculer(): Rover;
+    TourneADroite() : RoverWithState;
+    TourneAGauche(): RoverWithState;
+    Avancer() : RoverWithState;
+    Reculer(): RoverWithState;
 }
