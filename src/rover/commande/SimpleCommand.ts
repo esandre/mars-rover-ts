@@ -13,8 +13,8 @@ export class SimpleCommand implements roverCommand {
   executeOn(rover: RoverInterface): RoverInterface {
     if (this._letter == "A") return rover.GoAhead();
     if (this._letter == "R") return rover.BackOff();
-    if (this._letter == "D") return rover.TurnRight();
-    if (this._letter == "G") return rover.TurnLeft();
+    if (this._letter == "D") return rover.turnRight();
+    if (this._letter == "G") return rover.turnLeft();
     throw new Error("Not a valid command");
   }
 }

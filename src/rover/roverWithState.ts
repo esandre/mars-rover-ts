@@ -11,14 +11,14 @@ export class RoverWithState implements RoverInterface {
     this.Position = position;
   }
 
-  public TurnRight(): RoverWithState {
+  public turnRight(): RoverWithState {
     return new RoverWithState(
       this.Orientation.ClockwiseRotation(),
       this.Position
     );
   }
 
-  public TurnLeft(): RoverWithState {
+  public turnLeft(): RoverWithState {
     return new RoverWithState(
       this.Orientation.AntiClockwiseRotation(),
       this.Position

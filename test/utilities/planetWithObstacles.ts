@@ -1,8 +1,8 @@
-import { Planet } from "../../src/topology/planète.interface";
+import { Planet } from "../../src/topology/planet.interface";
 import { Point } from "../../src/geometry/point";
 import { WholeNumber } from "../../src/math/WholeNumber";
 
-export class PlanèteAvecObstacles implements Planet {
+export class PlanetWithObstacles implements Planet {
   private _decorated: Planet;
   private _obstacles: Point[];
 
@@ -11,7 +11,7 @@ export class PlanèteAvecObstacles implements Planet {
     this._obstacles = [];
   }
 
-  public AjouterObstacle(latitude: number, longitude: number) {
+  public addObstacle(latitude: number, longitude: number) {
     this._obstacles.push(
       this.Normalizer(
         new Point(new WholeNumber(latitude), new WholeNumber(longitude))
@@ -19,9 +19,9 @@ export class PlanèteAvecObstacles implements Planet {
     );
   }
 
-  private EstAccessible(point: Point): boolean {
-    const positionNormalisée = this.Normalizer(point);
-    return this._obstacles.includes(positionNormalisée);
+  private isAccessible(point: Point): boolean {
+    const normalizePosition = this.Normalizer(point);
+    return this._obstacles.includes(normalizePosition);
   }
 
   public Normalizer(position: Point): Point {
@@ -30,10 +30,10 @@ export class PlanèteAvecObstacles implements Planet {
 
   dependingOnAccessibility<T>(
     point: Point,
-    actionSiObstacle: () => T,
-    actionSiLibre: () => T
+    actionIfObstacle: () => T,
+    actionIfFree: () => T
   ): T {
-    if (this.EstAccessible(point)) return actionSiLibre();
-    return actionSiObstacle();
+    if (this.isAccessible(point)) return actionIfFree();
+    return actionIfObstacle();
   }
 }

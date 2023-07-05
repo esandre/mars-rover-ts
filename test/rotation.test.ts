@@ -1,5 +1,6 @@
-import { Orientations, Orientation } from "../src/topology/orientations";
+import { Orientation, Orientations } from "../src/topology/orientations";
 import { RoverBuilder } from "./utilities/rover.builder";
+
 const each = require("jest-each").default;
 
 describe("FEATURE Rotation", () => {
@@ -16,15 +17,15 @@ describe("FEATURE Rotation", () => {
     "ETANT DONNE un rover orienté %s " +
       "QUAND il tourne à droite %s fois " +
       "ALORS son orientation est %s",
-    (initiale: Orientation, nombreFois: number, finale: Orientations) => {
-      const rover = new RoverBuilder().AyantPourOrientation(initiale).Build();
+    (init: Orientation, countNumber: number, final: Orientations) => {
+      const rover = new RoverBuilder().havingForOrientation(init).Build();
 
-      let orientationRover: Orientations = initiale;
-      for (let rotations = 0; rotations < nombreFois; rotations++) {
-        orientationRover = rover.TurnRight().Orientation;
+      let orientationRover: Orientations = init;
+      for (let rotations = 0; rotations < countNumber; rotations++) {
+        orientationRover = rover.turnRight().Orientation;
       }
 
-      expect(orientationRover).toEqual(finale);
+      expect(orientationRover).toEqual(final);
     }
   );
 
@@ -41,15 +42,15 @@ describe("FEATURE Rotation", () => {
     "ETANT DONNE un rover orienté %s " +
       "QUAND il tourne à gauche %s fois " +
       "ALORS son orientation est %s",
-    (initiale: Orientation, nombreFois: number, finale: Orientations) => {
-      const rover = new RoverBuilder().AyantPourOrientation(initiale).Build();
+    (init: Orientation, countNumber: number, final: Orientations) => {
+      const rover = new RoverBuilder().havingForOrientation(init).Build();
 
-      let orientationRover: Orientations = initiale;
-      for (let rotations = 0; rotations < nombreFois; rotations++) {
-        orientationRover = rover.TurnLeft().Orientation;
+      let orientationRover: Orientations = init;
+      for (let rotations = 0; rotations < countNumber; rotations++) {
+        orientationRover = rover.turnLeft().Orientation;
       }
 
-      expect(orientationRover).toEqual(finale);
+      expect(orientationRover).toEqual(final);
     }
   );
 });

@@ -21,11 +21,11 @@ export class RoverInterpreter implements RoverInterface {
     return this._rover.BackOff();
   }
 
-  public TurnRight(): RoverWithState {
-    return this._rover.TurnRight();
+  public turnRight(): RoverWithState {
+    return this._rover.turnRight();
   }
 
-  public TurnLeft(): RoverWithState {
-    return this._rover.TurnLeft();
+  public turnLeft(): RoverWithState {
+    return this._rover.turnLeft();
   }
 }

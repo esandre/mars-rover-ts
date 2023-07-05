@@ -1,4 +1,4 @@
-import { Planet } from "../topology/planète.interface";
+import { Planet } from "../topology/planet.interface";
 import { Point } from "./point";
 
 export class Position {

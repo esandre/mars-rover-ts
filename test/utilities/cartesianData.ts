@@ -1,40 +1,39 @@
-export class CartesianData{
-    private readonly _args: any[][];
+export class CartesianData {
+  private readonly _args: any[][];
 
-    public constructor(...args: any[][]) {
-        this._args = args;
+  public constructor(...args: any[][]) {
+    this._args = args;
+  }
+
+  public toTestCases(): any[][] {
+    let combinations: any[][] = [];
+
+    for (const firstParameterValue of this._args[0]) {
+      combinations.push([firstParameterValue]);
     }
 
-    public toTestCases(): any[][] {
-        let combinaisons : any[][] = [];
+    for (const additionalParameter of this._args.slice(1))
+      combinations = this.addParameter(combinations, additionalParameter);
 
-        for(const valeurPremierParametre of this._args[0]){
-            combinaisons.push([valeurPremierParametre]);
+    return combinations;
+  }
+
+  private addParameter(combinations: any[][], parameters: any[]): any[][] {
+    let result: any[][] = [];
+
+    for (const value of parameters) {
+      for (const combination of combinations) {
+        let lineResult = [];
+
+        for (const element of combination) {
+          lineResult.push(element);
         }
 
-        for(const paramètreSupplémentaire of this._args.slice(1))
-            combinaisons = this.addParameter(combinaisons, paramètreSupplémentaire);
-
-        return combinaisons;
+        lineResult.push(value);
+        result.push(lineResult);
+      }
     }
 
-    private addParameter (combinaisons : any[][], paramètre: any[]) : any[][]
-    {
-        let result : any[][] = [];
-
-        for (const valeur of paramètre) {
-            for (const combinaison of combinaisons) {
-                let lineResult = [];
-
-                for (const element of combinaison){
-                    lineResult.push(element);
-                }
-
-                lineResult.push(valeur);
-                result.push(lineResult);
-            }
-        }
-
-        return result;
-    }
+    return result;
+  }
 }

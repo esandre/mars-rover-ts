@@ -1,9 +1,9 @@
 import { RoverWithState } from "./roverWithState";
 
 export interface RoverInterface {
-  TurnRight(): RoverWithState;
+  turnRight(): RoverWithState;
 
-  TurnLeft(): RoverWithState;
+  turnLeft(): RoverWithState;
 
   GoAhead(): RoverWithState;
 

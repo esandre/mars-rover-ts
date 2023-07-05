@@ -1,19 +1,19 @@
 import { Position } from "../../src/geometry/position";
-import { PlanèteInfinieVide } from "./planèteInfinieVide";
+import { infiniteEmptyPlanet } from "./infiniteEmptyPlanet";
 import { Point } from "../../src/geometry/point";
-import { Planet } from "../../src/topology/planète.interface";
+import { Planet } from "../../src/topology/planet.interface";
 import { WholeNumber } from "../../src/math/WholeNumber";
 
 export class PositionBuilder {
-  static Origine(): Position {
+  static origin(): Position {
     return new PositionBuilder().Build();
   }
 
   private _latitude: WholeNumber = WholeNumber.Zero;
   private _longitude: WholeNumber = WholeNumber.Zero;
-  private _planète: Planet = new PlanèteInfinieVide();
+  private _planet: Planet = new infiniteEmptyPlanet();
 
-  public AyantPourCoordonnées(
+  public haveForCoordinates(
     latitude: number,
     longitude: number
   ): PositionBuilder {
@@ -25,16 +25,16 @@ export class PositionBuilder {
   Build(): Position {
     return new Position(
       new Point(this._latitude, this._longitude),
-      this._planète
+      this._planet
     );
   }
 
-  Origine() {
-    return this.AyantPourCoordonnées(0, 0);
+  origin() {
+    return this.haveForCoordinates(0, 0);
   }
 
-  SurPlanète(planète: Planet) {
-    this._planète = planète;
+  onPlanet(planet: Planet) {
+    this._planet = planet;
     return this;
   }
 }

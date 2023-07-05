@@ -1,4 +1,4 @@
-import { Planet } from "./planète.interface";
+import { Planet } from "./planet.interface";
 import { Point } from "../geometry/point";
 import { WholeNumber } from "../math/WholeNumber";
 
