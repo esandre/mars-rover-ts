@@ -1,11 +1,11 @@
 import { RoverWithState } from "./roverWithState";
 
 export interface RoverInterface {
-  TourneADroite(): RoverWithState;
+  TurnRight(): RoverWithState;
 
-  TourneAGauche(): RoverWithState;
+  TurnLeft(): RoverWithState;
 
-  Avancer(): RoverWithState;
+  GoAhead(): RoverWithState;
 
-  Reculer(): RoverWithState;
+  BackOff(): RoverWithState;
 }

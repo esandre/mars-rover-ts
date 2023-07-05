@@ -1,5 +1,5 @@
-import { Orientation } from "../topologie/orientations";
-import { Position } from "../geometrie/position";
+import { Orientation } from "../topology/orientations";
+import { Position } from "../geometry/position";
 import { RoverInterface } from "./rover.interface";
 
 export class RoverWithState implements RoverInterface {
@@ -11,31 +11,31 @@ export class RoverWithState implements RoverInterface {
     this.Position = position;
   }
 
-  public TourneADroite(): RoverWithState {
+  public TurnRight(): RoverWithState {
     return new RoverWithState(
-      this.Orientation.RotationHoraire(),
+      this.Orientation.ClockwiseRotation(),
       this.Position
     );
   }
 
-  public TourneAGauche(): RoverWithState {
+  public TurnLeft(): RoverWithState {
     return new RoverWithState(
-      this.Orientation.RotationAntihoraire(),
+      this.Orientation.AntiClockwiseRotation(),
       this.Position
     );
   }
 
-  public Avancer(): RoverWithState {
+  public GoAhead(): RoverWithState {
     return new RoverWithState(
       this.Orientation,
-      this.Orientation.FaireAvancer(this.Position)
+      this.Orientation.GoAhead(this.Position)
     );
   }
 
-  public Reculer(): RoverWithState {
+  public BackOff(): RoverWithState {
     return new RoverWithState(
       this.Orientation,
-      this.Orientation.FaireReculer(this.Position)
+      this.Orientation.Backoff(this.Position)
     );
   }
 }

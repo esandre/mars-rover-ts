@@ -1,5 +1,10 @@
-import {Orientations} from "../../src/topologie/orientations";
+import { Orientations } from "../../src/topology/orientations";
 
 export class TestPrimitives {
-    public static readonly Orientations = [Orientations.Nord, Orientations.Sud, Orientations.Est, Orientations.Ouest];
+  public static readonly Orientations = [
+    Orientations.North,
+    Orientations.South,
+    Orientations.East,
+    Orientations.West,
+  ];
 }

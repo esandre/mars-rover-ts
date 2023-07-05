@@ -1,32 +1,39 @@
-import {Planète} from "../../src/topologie/planète.interface";
-import {Point} from "../../src/geometrie/point";
-import {Entier} from "../../src/math/Entier";
+import { Planet } from "../../src/topology/planète.interface";
+import { Point } from "../../src/geometry/point";
+import { WholeNumber } from "../../src/math/WholeNumber";
 
-export class PlanèteAvecObstacles implements Planète {
-    private _decorated: Planète;
-    private _obstacles: Point[];
+export class PlanèteAvecObstacles implements Planet {
+  private _decorated: Planet;
+  private _obstacles: Point[];
 
-    public constructor(decorated: Planète) {
-        this._decorated = decorated;
-        this._obstacles = [];
-    }
+  public constructor(decorated: Planet) {
+    this._decorated = decorated;
+    this._obstacles = [];
+  }
 
-    public AjouterObstacle(latitude: number, longitude: number){
-        this._obstacles.push(this.Normaliser(new Point(new Entier(latitude), new Entier(longitude))));
-    }
+  public AjouterObstacle(latitude: number, longitude: number) {
+    this._obstacles.push(
+      this.Normalizer(
+        new Point(new WholeNumber(latitude), new WholeNumber(longitude))
+      )
+    );
+  }
 
-    private EstAccessible(point: Point): boolean {
-        const positionNormalisée = this.Normaliser(point);
-        return this._obstacles.includes(positionNormalisée);
-    }
+  private EstAccessible(point: Point): boolean {
+    const positionNormalisée = this.Normalizer(point);
+    return this._obstacles.includes(positionNormalisée);
+  }
 
-    public Normaliser(position: Point): Point {
-        return this._decorated.Normaliser(position);
-    }
+  public Normalizer(position: Point): Point {
+    return this._decorated.Normalizer(position);
+  }
 
-    SelonAccessibilité<T>(point: Point, actionSiObstacle: () => T, actionSiLibre: () => T): T {
-        if(this.EstAccessible(point))
-            return actionSiLibre();
-        return actionSiObstacle();
-    }
+  dependingOnAccessibility<T>(
+    point: Point,
+    actionSiObstacle: () => T,
+    actionSiLibre: () => T
+  ): T {
+    if (this.EstAccessible(point)) return actionSiLibre();
+    return actionSiObstacle();
+  }
 }
