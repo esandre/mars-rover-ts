@@ -31,7 +31,7 @@ export class PlaneteBuilder {
     }
 }
 
-class PlanèteToroïdaleVide implements Planète {
+export class PlanèteToroïdaleVide implements Planète {
     private readonly _pointMax : Point;
 
     constructor(taille: Entier) {
@@ -63,6 +63,10 @@ class ObstacleDecorator implements Planète {
 
     public Normaliser(position: Point): Point {
         return this._decorated.Normaliser(position);
+    }
+
+    public getObstacles() {
+        return this._obstacle;
     }
 
     public SelonAccessibilité<T>(point: Point, actionSiObstacle: () => T, actionSiLibre: () => T): T {
