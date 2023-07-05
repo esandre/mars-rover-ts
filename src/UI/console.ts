@@ -12,7 +12,6 @@ export class Console {
         this.planete_taille = planeteTaille;
 
         console.log(this.obstables);
-        console.log(this.map);
     }
     public DisplayMap(rover: InterpréteurRover) {
         this.map = "";
@@ -21,14 +20,6 @@ export class Console {
         const rover_lat = rover_pos.getLat().getValue();
         const rover_lng = rover_pos.getLng().getValue();
         const rover_orientation = rover.getOrientation().toString();
-
-        console.log(rover_orientation);
-
-        // this.planete_taille.getValue()*
-
-        // this.map = this.map.substring(0, 5) + this.map + this.map.substring(5);
-
-        // console.log(position_rover.getValue());
 
         for (let i = this.planete_taille.getValue() - 1; i >= 0; i--) {
             this.map += "\n"
@@ -52,15 +43,6 @@ export class Console {
                     this.map += "-";
             }
         }
-        
-        // return position_rover.getValue();
-        // return "x";
-
-        // return substring(0, index) + replacement + substring(index + 1);
-
-        // console.log(this.position_rover);
-        
-        // return "\n-------\n---o--"
         return this.map;
     }
 }
