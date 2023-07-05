@@ -1,5 +1,4 @@
 import { Entier } from "../math/Entier";
-import { InterpréteurRover } from "../rover/interpréteurRover";
 import { Point } from "../geometrie/point";
 
 export class Console {
@@ -13,19 +12,25 @@ export class Console {
 
         console.log(this.obstables);
     }
-    public DisplayMap(rover: InterpréteurRover) {
+    public DisplayMap(rover : any) {
         this.map = "";
 
-        const rover_pos = rover.getPosition().getValue();
-        const rover_lat = rover_pos.getLat().getValue();
-        const rover_lng = rover_pos.getLng().getValue();
-        const rover_orientation = rover.getOrientation().toString();
+        let rover_lat = 0;
+        let rover_lng = 0;
+        let rover_orientation = "Nord";
+
+        if (rover !== false) {
+            const rover_pos = rover.getPosition().getValue();
+            rover_lat = rover_pos.getLat().getValue();
+            rover_lng = rover_pos.getLng().getValue();
+            rover_orientation = rover.getOrientation().toString();
+        }
 
         for (let i = this.planete_taille.getValue() - 1; i >= 0; i--) {
-            this.map += "\n"
+            this.map += "\n";
             for (let y = 0; y < this.planete_taille.getValue(); y++) {
-                if(y === rover_lng && i === rover_lat) {
-                    switch(rover_orientation) {
+                if (y === rover_lng && i === rover_lat) {
+                    switch (rover_orientation) {
                         case "Nord":
                             this.map += "▲";
                             break;
@@ -38,9 +43,8 @@ export class Console {
                         case "Ouest":
                             this.map += "◄";
                             break;
-                    };
-                } else
-                    this.map += "-";
+                    }
+                } else this.map += "-";
             }
         }
         return this.map;

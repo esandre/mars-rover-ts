@@ -6,6 +6,7 @@ ws.onerror = function (error) {
 
 ws.onopen = function () {
     console.log("Connection established");
+    ws.send("init");
 };
 
 ws.onmessage = function (event) {

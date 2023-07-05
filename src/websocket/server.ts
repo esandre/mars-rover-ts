@@ -26,7 +26,11 @@ wss.on('connection', function connection(ws) {
     .Build();
   let interpréteur = new InterpréteurRover(roverInterprété);
 
+  ws.send(consoleDisplay.DisplayMap(false));
+
   ws.on('message', function message(data) {
+    if(data === "init")
+      ws.send(consoleDisplay.DisplayMap(false));
     console.log('received: %s', data);
 
     try {
