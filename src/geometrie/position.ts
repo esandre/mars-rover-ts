@@ -35,8 +35,11 @@ export class Position {
     }
 
     private AllerADestinationSaufObstacle(pointDestination: Point) : Position{
-        const pointFinal = this._planète.SelonAccessibilité(this._point,
-            () => this._point,
+        const pointFinal = this._planète.SelonAccessibilité(pointDestination,
+            () => {
+                console.log(`obtacle détécté on lat : ${pointDestination.getLat().toString()}, lng: ${pointDestination.getLng().toString()}`)
+                return this._point
+            },
             () => pointDestination
         );
 
