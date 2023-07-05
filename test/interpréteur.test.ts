@@ -5,6 +5,8 @@ import {Orientation} from "../src/topologie/orientations";
 import {TestPrimitives} from "./utilities/testPrimitives";
 import {générerCombinaisons} from "./utilities/combinatoire";
 import {PositionBuilder} from "./utilities/position.builder";
+import {CommandeSimple} from "../src/rover/commande/CommandeSimple";
+import {CommandeComplexe} from "../src/rover/commande/CommandeComplexe";
 const each = require("jest-each").default;
 
 const latitudesDépart = [0, 1];
@@ -40,7 +42,7 @@ describe('FEATURE Interpréteur', () => {
             const roverInterprété = new RoverBuilder().AyantPourPosition(positionDépartCommune).Build();
             let interpréteur = new InterpréteurRover(roverInterprété);
 
-            interpréteur = interpréteur.Interpréter("A");
+            interpréteur = interpréteur.Interpréter(new CommandeSimple("A"));
             roverTémoin = roverTémoin.Avancer();
 
             expect(interpréteur).toEqual(new InterpréteurRover(roverTémoin)); // Instanciation obligatoire en raison du systéme d'égalité trop strict de TS
@@ -60,7 +62,7 @@ describe('FEATURE Interpréteur', () => {
                 const roverInterprété = new RoverBuilder().AyantPourPosition(positionDépartCommune).Build();
                 let interpréteur = new InterpréteurRover(roverInterprété);
 
-                interpréteur = interpréteur.Interpréter("R");
+                interpréteur = interpréteur.Interpréter(new CommandeSimple("R"));
                 roverTémoin = roverTémoin.Reculer();
 
                 expect(interpréteur).toEqual(new InterpréteurRover(roverTémoin)); // Instanciation obligatoire en raison du systéme d'égalité trop strict de TS
@@ -76,7 +78,7 @@ describe('FEATURE Interpréteur', () => {
                 const roverInterprété = new RoverBuilder().AyantPourOrientation(orientationDépart).Build();
                 let interpréteur = new InterpréteurRover(roverInterprété);
 
-                interpréteur = interpréteur.Interpréter("D");
+                interpréteur = interpréteur.Interpréter(new CommandeSimple("D"));
                 roverTémoin = roverTémoin.TourneADroite();
 
                 expect(interpréteur).toEqual(new InterpréteurRover(roverTémoin)); // Instanciation obligatoire en raison du systéme d'égalité trop strict de TS
@@ -92,7 +94,7 @@ describe('FEATURE Interpréteur', () => {
                 const roverInterprété = new RoverBuilder().AyantPourOrientation(orientationDépart).Build();
                 let interpréteur = new InterpréteurRover(roverInterprété);
 
-                interpréteur = interpréteur.Interpréter("G");
+                interpréteur = interpréteur.Interpréter(new CommandeSimple("G"));
                 roverTémoin = roverTémoin.TourneAGauche();
 
                 expect(interpréteur).toEqual(new InterpréteurRover(roverTémoin)); // Instanciation obligatoire en raison du systéme d'égalité trop strict de TS
@@ -106,7 +108,7 @@ describe('FEATURE Interpréteur', () => {
             (commandeInvalide: string) => {
                 const interpréteur = new InterpréteurRover(new RoverBuilder().Build());
 
-                const résultatCommande = () => interpréteur.Interpréter(commandeInvalide);
+                const résultatCommande = () => interpréteur.Interpréter(new CommandeComplexe(commandeInvalide));
 
                 expect(résultatCommande).toThrow()
             });
@@ -134,10 +136,10 @@ describe('FEATURE Commandes Multiples', () => {
                 let interpréteurTémoin = new InterpréteurRover(roverTémoin);
 
                 for (const commandeSimple of commande) {
-                    interpréteurTémoin = interpréteurTémoin.Interpréter(commandeSimple);
+                    interpréteurTémoin = interpréteurTémoin.Interpréter(new CommandeSimple(commandeSimple));
                 }
 
-                interpréteurTesté = interpréteurTesté.Interpréter(commande);
+                interpréteurTesté = interpréteurTesté.Interpréter(new CommandeComplexe(commande));
 
                 expect(interpréteurTesté).toStrictEqual(interpréteurTémoin);
             });

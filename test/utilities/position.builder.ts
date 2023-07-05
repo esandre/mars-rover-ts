@@ -1,30 +1,34 @@
 import {Position} from "../../src/geometrie/position";
-import {PlanèteInfinie} from "./planèteInfinie";
+import {PlanèteInfinieVide} from "./planèteInfinieVide";
 import {Point} from "../../src/geometrie/point";
-import {SansObstacles} from "./sansObstacles";
-import {SystèmeCoordonnées} from "../../src/topologie/systèmeCoordonnées.interface";
+import {Planète} from "../../src/topologie/planète.interface";
+import {Entier} from "../../src/math/Entier";
 
 export class PositionBuilder {
     static Origine(): Position {
         return new PositionBuilder().Build();
     }
 
-    private _latitude : number = 0;
-    private _longitude : number = 0;
-    private _systèmeCoordonnées : SystèmeCoordonnées = new PlanèteInfinie();
+    private _latitude : Entier = Entier.Zéro;
+    private _longitude : Entier = Entier.Zéro;
+    private _planète : Planète = new PlanèteInfinieVide();
 
     public AyantPourCoordonnées(latitude: number, longitude: number): PositionBuilder {
-        this._latitude = latitude;
-        this._longitude = longitude;
+        this._latitude = new Entier(latitude);
+        this._longitude = new Entier(longitude);
         return this;
     }
 
     Build() : Position {
-        return new Position(new Point(this._latitude, this._longitude), this._systèmeCoordonnées, new SansObstacles());
+        return new Position(new Point(this._latitude, this._longitude), this._planète);
     }
 
-    AyantPourSystèmeDeCoordonnées(systèmeCoordonnées: SystèmeCoordonnées) {
-        this._systèmeCoordonnées = systèmeCoordonnées;
+    Origine() {
+        return this.AyantPourCoordonnées(0,0);
+    }
+
+    SurPlanète(planète: Planète) {
+        this._planète = planète;
         return this;
     }
 }

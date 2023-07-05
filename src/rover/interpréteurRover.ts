@@ -1,38 +1,31 @@
-import {Rover} from "./rover.ts";
+import {RoverWithState} from "./roverWithState.ts";
 import {RoverInterface} from "./rover.interface.ts";
+import {CommandeRover} from "./commande/CommandeRover.ts";
 
 export class InterpréteurRover implements RoverInterface {
-    private _rover: RoverInterface;
+    private readonly _rover: RoverInterface;
+
     public constructor(roverCommandé: RoverInterface) {
         this._rover = roverCommandé;
     }
 
-    public Interpréter(commande: string) : InterpréteurRover {
-        if(commande.length > 1) {
-            return this.Interpréter(commande[0]).Interpréter(commande.slice(1));
-        }
-
-        if(commande == "A") return new InterpréteurRover(this._rover.Avancer());
-        if(commande == "R") return new InterpréteurRover(this._rover.Reculer());
-        if(commande == "D") return new InterpréteurRover(this._rover.TourneADroite());
-        if(commande == "G") return new InterpréteurRover(this._rover.TourneAGauche());
-
-        throw new Error();
+    public Interpréter(commande: CommandeRover) : InterpréteurRover {
+        return new InterpréteurRover(commande.ExécuterSur(this._rover));
     }
 
-    Avancer(): Rover {
+    public Avancer(): RoverWithState {
         return this._rover.Avancer();
     }
 
-    Reculer(): Rover {
+    Reculer(): RoverWithState {
         return this._rover.Reculer();
     }
 
-    TourneADroite(): Rover {
+    TourneADroite(): RoverWithState {
         return this._rover.TourneADroite();
     }
 
-    TourneAGauche(): Rover {
+    TourneAGauche(): RoverWithState {
         return this._rover.TourneAGauche();
     }
 }

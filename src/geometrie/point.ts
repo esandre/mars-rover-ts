@@ -1,35 +1,34 @@
-export class Point{
-    private readonly _latitude: number;
-    private readonly _longitude: number;
+import {Entier} from "../math/Entier.ts";
 
-    constructor(latitude: number, longitude: number) {
-        this._latitude = latitude == -0 ? 0 : latitude;
-        this._longitude = longitude == -0 ? 0 : longitude;
+export class Point{
+    private readonly _latitude: Entier;
+    private readonly _longitude: Entier;
+
+    constructor(latitude: Entier, longitude: Entier) {
+        this._latitude = latitude;
+        this._longitude = longitude;
     }
 
-    public Modulo(modulo: number) {
-        return new Point(
-            this._latitude % modulo,
-            this._longitude % modulo);
+    public Modulo2D(modulo: Point) {
+        const latitude = this._latitude.Modulo(modulo._latitude);
+        const longitude = this._longitude.Modulo(modulo._longitude);
+
+        return new Point(latitude, longitude);
     }
 
     public IncrémenterLatitude() : Point {
-        return new Point(this._latitude + 1, this._longitude);
+        return new Point(this._latitude.Incrémenter(), this._longitude);
     }
 
     public DécrémenterLatitude() : Point {
-        return new Point(this._latitude - 1, this._longitude);
+        return new Point(this._latitude.Décrémenter(), this._longitude);
     }
 
     public IncrémenterLongitude() : Point {
-        return new Point(this._latitude, this._longitude + 1);
+        return new Point(this._latitude, this._longitude.Incrémenter());
     }
 
     public DécrémenterLongitude() : Point {
-        return new Point(this._latitude, this._longitude - 1);
-    }
-
-    public Add(other: Point) : Point {
-        return new Point(this._latitude + other._latitude, this._longitude + other._longitude);
+        return new Point(this._latitude, this._longitude.Décrémenter());
     }
 }

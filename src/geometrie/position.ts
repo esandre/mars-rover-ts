@@ -1,16 +1,13 @@
-import {SystèmeCoordonnées} from "../topologie/systèmeCoordonnées.interface.ts";
+import {Planète} from "../topologie/planète.interface.ts";
 import {Point} from "./point.ts";
-import {PossèdeObstacles} from "../topologie/possedeObstacles.interface.ts";
 
 export class Position {
     private readonly _point: Point;
-    private readonly _systèmeCoordonnées: SystèmeCoordonnées;
-    private readonly _connaissanceObstacles: PossèdeObstacles;
+    private readonly _planète: Planète;
 
-    constructor(point: Point, systèmeCoordonnées: SystèmeCoordonnées, connaissanceObstacles: PossèdeObstacles) {
-        this._connaissanceObstacles = connaissanceObstacles;
-        this._point = systèmeCoordonnées.Normaliser(point);
-        this._systèmeCoordonnées = systèmeCoordonnées;
+    constructor(point: Point, planète: Planète) {
+        this._planète = planète;
+        this._point = planète.Normaliser(point);
     }
 
     IncrémenterLatitudeSaufObstacle() : Position {
@@ -30,8 +27,11 @@ export class Position {
     }
 
     private AllerADestinationSaufObstacle(pointDestination: Point) : Position{
-        if(this._connaissanceObstacles.EstAccessible(pointDestination))
-            return new Position(pointDestination, this._systèmeCoordonnées, this._connaissanceObstacles);
-        return new Position(this._point, this._systèmeCoordonnées, this._connaissanceObstacles);
+        const pointFinal = this._planète.SelonAccessibilité(this._point,
+            () => this._point,
+            () => pointDestination
+        );
+
+        return new Position(pointFinal, this._planète);
     }
 }

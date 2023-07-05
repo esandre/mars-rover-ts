@@ -1,18 +1,19 @@
-import {SystèmeCoordonnées} from "./systèmeCoordonnées.interface.ts";
+import {Planète} from "./planète.interface.ts";
 import {Point} from "../geometrie/point.ts";
+import {Entier} from "../math/Entier.ts";
 
-export class PlanèteToroïdale implements SystèmeCoordonnées {
-    private readonly _taille: number;
+export class PlanèteToroïdaleVide implements Planète {
     private readonly _pointMax : Point;
 
-    constructor(taille: number) {
-        this._taille = taille;
+    constructor(taille: Entier) {
         this._pointMax = new Point(taille, taille);
     }
 
     Normaliser(point: Point): Point {
-        // Maths probablement sous optimisées mais fatigue
-        const normaliséSigné = point.Modulo(this._taille).Modulo(-this._taille);
-        return normaliséSigné.Add(this._pointMax).Modulo(this._taille);
+        return point.Modulo2D(this._pointMax);
+    }
+
+    SelonAccessibilité<T>(point: Point, actionSiObstacle: () => T, actionSiLibre: () => T): T {
+        return actionSiLibre();
     }
 }
