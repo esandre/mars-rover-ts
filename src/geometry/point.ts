@@ -10,25 +10,32 @@ export class Point {
   }
 
   public modulo2D(modulo: Point) {
-    const latitude = this._latitude.Modulo(modulo._latitude);
-    const longitude = this._longitude.Modulo(modulo._longitude);
+    const latitude = this._latitude.modulo(modulo._latitude);
+    const longitude = this._longitude.modulo(modulo._longitude);
 
     return new Point(latitude, longitude);
   }
 
   public incrementLatitude(): Point {
-    return new Point(this._latitude.Increment(), this._longitude);
+    return new Point(this._latitude.increment(), this._longitude);
   }
 
   public decrementLatitude(): Point {
     return new Point(this._latitude.Decrement(), this._longitude);
   }
 
-  public IncrementLongitude(): Point {
-    return new Point(this._latitude, this._longitude.Increment());
+  public incrementLongitude(): Point {
+    return new Point(this._latitude, this._longitude.increment());
   }
 
-  public DecrementLongitude(): Point {
+  public decrementLongitude(): Point {
     return new Point(this._latitude, this._longitude.Decrement());
+  }
+
+  public equals(other: Point) {
+    return (
+      this._latitude.equals(this._latitude) &&
+      other._longitude.equals(this._longitude)
+    );
   }
 }

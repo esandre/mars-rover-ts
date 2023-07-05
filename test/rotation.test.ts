@@ -18,14 +18,13 @@ describe("FEATURE Rotation", () => {
       "QUAND il tourne à droite %s fois " +
       "ALORS son orientation est %s",
     (init: Orientation, countNumber: number, final: Orientations) => {
-      const rover = new RoverBuilder().havingForOrientation(init).Build();
+      let rover = new RoverBuilder().havingForOrientation(init).Build();
 
-      let orientationRover: Orientations = init;
       for (let rotations = 0; rotations < countNumber; rotations++) {
-        orientationRover = rover.turnRight().Orientation;
+        rover = rover.turnRight();
       }
 
-      expect(orientationRover).toEqual(final);
+      expect(rover.Orientation).toEqual(final);
     }
   );
 
@@ -43,14 +42,14 @@ describe("FEATURE Rotation", () => {
       "QUAND il tourne à gauche %s fois " +
       "ALORS son orientation est %s",
     (init: Orientation, countNumber: number, final: Orientations) => {
-      const rover = new RoverBuilder().havingForOrientation(init).Build();
+      let rover = new RoverBuilder().havingForOrientation(init).Build();
 
       let orientationRover: Orientations = init;
       for (let rotations = 0; rotations < countNumber; rotations++) {
-        orientationRover = rover.turnLeft().Orientation;
+        rover = rover.turnLeft();
       }
 
-      expect(orientationRover).toEqual(final);
+      expect(rover.Orientation).toEqual(final);
     }
   );
 });

@@ -1,11 +1,9 @@
 import { RoverBuilder } from "./utilities/rover.builder";
-import { EmptyToroidalPlanet } from "../src/topology/toroidalPlanet";
-import { PlanetWithObstacles } from "./utilities/planetWithObstacles";
 import { TestPrimitives } from "./utilities/testPrimitives";
 import { CartesianData } from "./utilities/cartesianData";
 import { Orientation } from "../src/topology/orientations";
 import { PositionBuilder } from "./utilities/position.builder";
-import { WholeNumber } from "../src/math/WholeNumber";
+import { PlanetBuilder } from "../src/topology/planet.builder";
 
 const each = require("jest-each").default;
 
@@ -16,12 +14,12 @@ describe("FEATURE Obstacles", () => {
       "QUAND il avance " +
       "ALORS il ne bouge pas",
     (orientation: Orientation) => {
-      const planet = new PlanetWithObstacles(
-        new EmptyToroidalPlanet(new WholeNumber(2))
-      );
-      planet.addObstacle(0, 1);
-      planet.addObstacle(1, 0);
-      planet.addObstacle(1, 1);
+      const planet = new PlanetBuilder()
+        .withSize(2)
+        .haveAnObstacleAtCoordinates(0, 1)
+        .haveAnObstacleAtCoordinates(1, 0)
+        .haveAnObstacleAtCoordinates(1, 1)
+        .build();
 
       const startPosition = new PositionBuilder()
         .origin()

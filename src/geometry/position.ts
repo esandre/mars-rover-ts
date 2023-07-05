@@ -7,7 +7,7 @@ export class Position {
 
   constructor(point: Point, planet: Planet) {
     this._planet = planet;
-    this._point = planet.Normalizer(point);
+    this._point = planet.normalizer(point);
   }
 
   incrementLatitudeExceptObstacle(): Position {
@@ -24,13 +24,13 @@ export class Position {
 
   incrementLongitudeExpectObstacle(): Position {
     return this.goToDestinationBarringObstacles(
-      this._point.IncrementLongitude()
+      this._point.incrementLongitude()
     );
   }
 
   decrementLongitudeExpectObstacle(): Position {
     return this.goToDestinationBarringObstacles(
-      this._point.DecrementLongitude()
+      this._point.decrementLongitude()
     );
   }
 

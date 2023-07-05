@@ -17,11 +17,11 @@ export class WholeNumber {
     return number;
   }
 
-  Increment() {
+  increment() {
     return new WholeNumber(this._value + 1);
   }
 
-  Modulo(other: WholeNumber) {
+  modulo(other: WholeNumber) {
     const otherValue = other._value;
 
     const valueReducedSigned = (this._value % otherValue) % -otherValue;
@@ -29,5 +29,9 @@ export class WholeNumber {
     const unsignedReducedValue = unsignedValue % otherValue;
 
     return new WholeNumber(unsignedReducedValue);
+  }
+
+  public equals(other: WholeNumber) {
+    return this._value === other._value;
   }
 }

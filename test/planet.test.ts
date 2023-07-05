@@ -1,10 +1,10 @@
 import { RoverBuilder } from "./utilities/rover.builder";
-import { EmptyToroidalPlanet } from "../src/topology/toroidalPlanet";
 import { CartesianData } from "./utilities/cartesianData";
 import { Orientation } from "../src/topology/orientations";
 import { TestPrimitives } from "./utilities/testPrimitives";
 import { PositionBuilder } from "./utilities/position.builder";
 import { WholeNumber } from "../src/math/WholeNumber";
+import { PlanetBuilder } from "./utilities/planete.builder";
 
 const each = require("jest-each").default;
 
@@ -31,7 +31,7 @@ describe("FEATURE Planète", () => {
       startLongitude: number,
       size: number
     ) => {
-      const planet = new EmptyToroidalPlanet(new WholeNumber(size));
+      const planet = new PlanetBuilder().withSize(size).build();
 
       const originalPosition = new PositionBuilder()
         .haveForCoordinates(startLatitude, startLongitude)

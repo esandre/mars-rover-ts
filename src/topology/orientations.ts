@@ -26,11 +26,11 @@ class OrientationNorth implements Orientation {
   }
 
   AntiClockwiseRotation(): Orientation {
-    return Orientations.East;
+    return Orientations.West;
   }
 
   ClockwiseRotation(): Orientation {
-    return Orientations.West;
+    return Orientations.East;
   }
 
   toString(): string {
@@ -52,11 +52,11 @@ class OrientationSouth implements Orientation {
   }
 
   AntiClockwiseRotation(): Orientation {
-    return Orientations.West;
+    return Orientations.East;
   }
 
   ClockwiseRotation(): Orientation {
-    return Orientations.East;
+    return Orientations.West;
   }
 
   toString(): string {
@@ -104,11 +104,11 @@ class OrientationWest implements Orientation {
   }
 
   AntiClockwiseRotation(): Orientation {
-    return Orientations.West;
+    return Orientations.South;
   }
 
   ClockwiseRotation(): Orientation {
-    return Orientations.East;
+    return Orientations.North;
   }
 
   toString(): string {
