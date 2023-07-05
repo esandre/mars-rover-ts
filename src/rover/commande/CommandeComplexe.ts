@@ -1,7 +1,7 @@
-import {CommandeRover} from "./CommandeRover.ts";
-import {CommandeSimple} from "./CommandeSimple.ts";
-import {RoverInterface} from "../rover.interface.ts";
-import {CommandeVide} from "./CommandeVide.ts";
+import {CommandeRover} from "./CommandeRover";
+import {CommandeSimple} from "./CommandeSimple";
+import {RoverInterface} from "../rover.interface";
+import {CommandeVide} from "./CommandeVide";
 
 export class CommandeComplexe implements CommandeRover {
     private readonly _premièreCommande : CommandeSimple;

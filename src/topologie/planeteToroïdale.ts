@@ -1,6 +1,6 @@
-import {Planète} from "./planète.interface.ts";
-import {Point} from "../geometrie/point.ts";
-import {Entier} from "../math/Entier.ts";
+import {Planète} from "./planète.interface";
+import {Point} from "../geometrie/point";
+import {Entier} from "../math/Entier";
 
 export class PlanèteToroïdaleVide implements Planète {
     private readonly _pointMax : Point;

@@ -1,5 +1,5 @@
 import {RoverBuilder} from "./utilities/rover.builder";
-import {InterpréteurRover} from "../src/rover/interpréteurRover";
+import {InterpréteurRover} from "../src/interpreteur/interpréteurRover";
 import {CartesianData} from "./utilities/cartesianData";
 import {Orientation} from "../src/topologie/orientations";
 import {TestPrimitives} from "./utilities/testPrimitives";

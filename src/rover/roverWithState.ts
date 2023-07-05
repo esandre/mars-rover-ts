@@ -1,6 +1,6 @@
-import {Orientation} from "../topologie/orientations.ts";
-import {Position} from "../geometrie/position.ts";
-import {RoverInterface} from "./rover.interface.ts";
+import {Orientation} from "../topologie/orientations";
+import {Position} from "../geometrie/position";
+import {RoverInterface} from "./rover.interface";
 
 export class RoverWithState implements RoverInterface {
     public readonly Orientation: Orientation;

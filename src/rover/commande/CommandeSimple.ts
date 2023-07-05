@@ -1,5 +1,5 @@
-import {CommandeRover} from "./CommandeRover.ts";
-import {RoverInterface} from "../rover.interface.ts";
+import {CommandeRover} from "./CommandeRover";
+import {RoverInterface} from "../rover.interface";
 
 export class CommandeSimple implements CommandeRover {
     private readonly _letter : string;

@@ -1,4 +1,4 @@
-import {RoverWithState} from "./roverWithState.ts";
+import {RoverWithState} from "./roverWithState";
 
 export interface RoverInterface {
     TourneADroite() : RoverWithState;

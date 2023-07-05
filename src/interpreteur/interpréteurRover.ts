@@ -1,6 +1,6 @@
-import {RoverWithState} from "./roverWithState.ts";
-import {RoverInterface} from "./rover.interface.ts";
-import {CommandeRover} from "./commande/CommandeRover.ts";
+import {RoverWithState} from "../rover/roverWithState";
+import {RoverInterface} from "../rover/rover.interface";
+import {CommandeRover} from "../rover/commande/CommandeRover";
 
 export class InterpréteurRover implements RoverInterface {
     private readonly _rover: RoverInterface;
