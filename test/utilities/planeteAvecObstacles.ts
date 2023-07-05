@@ -1,6 +1,7 @@
 import {Planète} from "../../src/topologie/planète.interface";
 import {Point} from "../../src/geometrie/point";
 import {Entier} from "../../src/math/Entier";
+import {RepésentateurPlanèteInterface} from "../../src/ui/représentateurPlanète.interface";
 
 export class PlanèteAvecObstacles implements Planète {
     private _decorated: Planète;
@@ -28,5 +29,8 @@ export class PlanèteAvecObstacles implements Planète {
         if(this.EstAccessible(point))
             return actionSiLibre();
         return actionSiObstacle();
+    }
+
+    Visiter(représentateur: RepésentateurPlanèteInterface): void {
     }
 }
