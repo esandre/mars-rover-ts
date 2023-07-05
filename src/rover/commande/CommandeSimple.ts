@@ -1,21 +1,20 @@
-import {CommandeRover} from "./CommandeRover";
-import {RoverInterface} from "../rover.interface";
+import { CommandeRover } from "./CommandeRover";
+import { RoverInterface } from "../rover.interface";
 
 export class CommandeSimple implements CommandeRover {
-    private readonly _letter : string;
+  private readonly _letter: string;
 
-    constructor(commandeElement: string) {
-        if(commandeElement.length != 1) throw new Error("Not a simple command");
+  constructor(commandeElement: string) {
+    if (commandeElement.length != 1) throw new Error("Not a simple command");
 
-        this._letter = commandeElement;
-    }
+    this._letter = commandeElement;
+  }
 
-    ExécuterSur(rover: RoverInterface): RoverInterface {
-        if(this._letter == "A") return rover.Avancer();
-        if(this._letter == "R") return rover.Reculer();
-        if(this._letter == "D") return rover.TourneADroite();
-        if(this._letter == "G") return rover.TourneAGauche();
-        throw new Error("Not a valid command");
-    }
-
+  ExécuterSur(rover: RoverInterface): RoverInterface {
+    if (this._letter == "A") return rover.Avancer();
+    if (this._letter == "R") return rover.Reculer();
+    if (this._letter == "D") return rover.TourneADroite();
+    if (this._letter == "G") return rover.TourneAGauche();
+    throw new Error("Not a valid command");
+  }
 }

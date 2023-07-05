@@ -1,5 +1,5 @@
-import {RoverInterface} from "../rover.interface";
+import { RoverInterface } from "../rover.interface";
 
-export interface CommandeRover{
-    ExécuterSur(rover: RoverInterface) : RoverInterface;
+export interface CommandeRover {
+  ExécuterSur(rover: RoverInterface): RoverInterface;
 }
