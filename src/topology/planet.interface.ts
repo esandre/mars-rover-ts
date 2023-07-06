@@ -5,7 +5,7 @@ export interface Planet {
 
   dependingOnAccessibility<T>(
     point: Point,
-    actionSiObstacle: () => T,
-    actionSiLibre: () => T
+    actionIfObstacle: () => T,
+    actionSiFree: () => T
   ): T;
 }

@@ -2,6 +2,7 @@ import { RoverBuilder } from "./utilities/rover.builder";
 import { CartesianData } from "./utilities/cartesianData";
 import { PositionBuilder } from "./utilities/position.builder";
 import { TestPrimitives } from "./utilities/testPrimitives";
+import { Orientation, Orientations } from "../src/topology/orientation";
 
 const each = require("jest-each").default;
 
@@ -47,7 +48,7 @@ describe("FEATURE Avancement", () => {
     (numberOfMovements: number) => {
       const originalPosition = PositionBuilder.origin();
       let rover = new RoverBuilder()
-        .havingForOrientation(Orientation.North)
+        .havingForOrientation(Orientations.North)
         .havingForPosition(originalPosition)
         .build();
 
@@ -69,7 +70,7 @@ describe("FEATURE Avancement", () => {
     (numberOfMovements: number) => {
       const originalPosition = PositionBuilder.origin();
       let rover = new RoverBuilder()
-        .havingForOrientation(Orientation.South)
+        .havingForOrientation(Orientations.South)
         .havingForPosition(originalPosition)
         .build();
 
@@ -91,7 +92,7 @@ describe("FEATURE Avancement", () => {
     (numberOfMovements: number) => {
       const originalPosition = PositionBuilder.origin();
       let rover = new RoverBuilder()
-        .havingForOrientation(Orientation.East)
+        .havingForOrientation(Orientations.East)
         .havingForPosition(originalPosition)
         .build();
 
@@ -112,7 +113,7 @@ describe("FEATURE Avancement", () => {
     (numberOfMovements: number) => {
       const originalPosition = PositionBuilder.origin();
       let rover = new RoverBuilder()
-        .havingForOrientation(Orientation.West)
+        .havingForOrientation(Orientations.West)
         .havingForPosition(originalPosition)
         .build();
 

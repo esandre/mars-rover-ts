@@ -38,4 +38,8 @@ export class RoverWithState implements RoverInterface {
       this.Orientation.backoff(this.Position)
     );
   }
+
+  public getCurrentPosition(): Position {
+    return this.Position;
+  }
 }

@@ -10,6 +10,10 @@ export class Position {
     this._point = planet.normalizer(point);
   }
 
+  getPoint(): Point {
+    return this._point;
+  }
+
   incrementLatitudeExceptObstacle(): Position {
     return this.goToDestinationBarringObstacles(
       this._point.incrementLatitude()
