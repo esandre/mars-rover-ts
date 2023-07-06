@@ -1,6 +1,6 @@
 import { RoverWithState } from "../rover/roverWithState";
 import { RoverInterface } from "../rover/rover.interface";
-import { roverCommand } from "../rover/commande/RoverCommand";
+import { roverCommandInterface } from "../rover/commande/roverCommand.interface";
 
 export class RoverInterpreter implements RoverInterface {
   private readonly _rover: RoverInterface;
@@ -9,16 +9,16 @@ export class RoverInterpreter implements RoverInterface {
     this._rover = pilotedRover;
   }
 
-  public Interpreter(command: roverCommand): RoverInterpreter {
+  public Interpreter(command: roverCommandInterface): RoverInterpreter {
     return new RoverInterpreter(command.executeOn(this._rover));
   }
 
-  public GoAhead(): RoverWithState {
-    return this._rover.GoAhead();
+  public goAhead(): RoverWithState {
+    return this._rover.goAhead();
   }
 
-  public BackOff(): RoverWithState {
-    return this._rover.BackOff();
+  public backOff(): RoverWithState {
+    return this._rover.backOff();
   }
 
   public turnRight(): RoverWithState {

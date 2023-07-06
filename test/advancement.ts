@@ -1,4 +1,3 @@
-import { Orientation, Orientations } from "../src/topology/orientations";
 import { RoverBuilder } from "./utilities/rover.builder";
 import { CartesianData } from "./utilities/cartesianData";
 import { PositionBuilder } from "./utilities/position.builder";
@@ -28,14 +27,14 @@ describe("FEATURE Avancement", () => {
     ) => {
       const originalPosition = new PositionBuilder()
         .haveForCoordinates(startLatitude, startLongitude)
-        .Build();
+        .build();
 
       let rover = new RoverBuilder()
         .havingForPosition(originalPosition)
         .havingForOrientation(orientation)
-        .Build();
+        .build();
 
-      rover = rover.GoAhead().BackOff();
+      rover = rover.goAhead().backOff();
 
       expect(rover.Position).toStrictEqual(originalPosition);
     }
@@ -48,15 +47,15 @@ describe("FEATURE Avancement", () => {
     (numberOfMovements: number) => {
       const originalPosition = PositionBuilder.origin();
       let rover = new RoverBuilder()
-        .havingForOrientation(Orientations.North)
+        .havingForOrientation(Orientation.North)
         .havingForPosition(originalPosition)
-        .Build();
+        .build();
 
       let expectedPosition = originalPosition;
 
       for (let movements = 0; movements < numberOfMovements; movements++) {
         expectedPosition = expectedPosition.incrementLatitudeExceptObstacle();
-        rover = rover.GoAhead();
+        rover = rover.goAhead();
       }
 
       expect(rover.Position).toStrictEqual(expectedPosition);
@@ -70,15 +69,15 @@ describe("FEATURE Avancement", () => {
     (numberOfMovements: number) => {
       const originalPosition = PositionBuilder.origin();
       let rover = new RoverBuilder()
-        .havingForOrientation(Orientations.South)
+        .havingForOrientation(Orientation.South)
         .havingForPosition(originalPosition)
-        .Build();
+        .build();
 
       let expectedPosition = originalPosition;
 
       for (let movements = 0; movements < numberOfMovements; movements++) {
         expectedPosition = expectedPosition.decrementLatitudeExceptObstacle();
-        rover = rover.GoAhead();
+        rover = rover.goAhead();
       }
 
       expect(rover.Position).toStrictEqual(expectedPosition);
@@ -92,14 +91,14 @@ describe("FEATURE Avancement", () => {
     (numberOfMovements: number) => {
       const originalPosition = PositionBuilder.origin();
       let rover = new RoverBuilder()
-        .havingForOrientation(Orientations.East)
+        .havingForOrientation(Orientation.East)
         .havingForPosition(originalPosition)
-        .Build();
+        .build();
 
       let expectedPosition = originalPosition;
       for (let movements = 0; movements < numberOfMovements; movements++) {
         expectedPosition = expectedPosition.incrementLongitudeExpectObstacle();
-        rover = rover.GoAhead();
+        rover = rover.goAhead();
       }
 
       expect(rover.Position).toStrictEqual(expectedPosition);
@@ -113,15 +112,15 @@ describe("FEATURE Avancement", () => {
     (numberOfMovements: number) => {
       const originalPosition = PositionBuilder.origin();
       let rover = new RoverBuilder()
-        .havingForOrientation(Orientations.West)
+        .havingForOrientation(Orientation.West)
         .havingForPosition(originalPosition)
-        .Build();
+        .build();
 
       let expectedPosition = originalPosition;
 
       for (let movements = 0; movements < numberOfMovements; movements++) {
         expectedPosition = expectedPosition.decrementLongitudeExpectObstacle();
-        rover = rover.GoAhead();
+        rover = rover.goAhead();
       }
 
       expect(rover.Position).toStrictEqual(expectedPosition);

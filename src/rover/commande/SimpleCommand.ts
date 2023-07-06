@@ -1,7 +1,7 @@
-import { roverCommand } from "./RoverCommand";
+import { roverCommandInterface } from "./roverCommand.interface";
 import { RoverInterface } from "../rover.interface";
 
-export class SimpleCommand implements roverCommand {
+export class SimpleCommand implements roverCommandInterface {
   private readonly _letter: string;
 
   constructor(elementCommand: string) {
@@ -11,8 +11,8 @@ export class SimpleCommand implements roverCommand {
   }
 
   executeOn(rover: RoverInterface): RoverInterface {
-    if (this._letter == "A") return rover.GoAhead();
-    if (this._letter == "R") return rover.BackOff();
+    if (this._letter == "A") return rover.goAhead();
+    if (this._letter == "R") return rover.backOff();
     if (this._letter == "D") return rover.turnRight();
     if (this._letter == "G") return rover.turnLeft();
     throw new Error("Not a valid command");

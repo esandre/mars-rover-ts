@@ -1,9 +1,8 @@
 import { Orientation } from "../topology/orientation";
 import { Planet } from "../topology/planet.interface";
 import { RoverInterpreter } from "../interpreter/roverInterpreter";
-import { MissionControlInterface } from "./missionControl.interface";
 
-export class MissionControl implements MissionControlInterface {
+export class Rover {
   private readonly _orientation: Orientation;
   private readonly _planet: Planet;
   private readonly _interpreter: RoverInterpreter;

@@ -1,3 +1,1 @@
-export interface MissionControlInterface {
-  getMapInformation();
-}
+export interface MissionControlInterface {}

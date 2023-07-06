@@ -1,13 +1,13 @@
 import { Position } from "../geometry/position";
 
 export interface Orientation {
-  ClockwiseRotation(): Orientation;
+  clockwiseRotation(): Orientation;
 
-  AntiClockwiseRotation(): Orientation;
+  antiClockwiseRotation(): Orientation;
 
-  GoAhead(position: Position): Position;
+  goAhead(position: Position): Position;
 
-  Backoff(position: Position): Position;
+  backoff(position: Position): Position;
 
   toString(): string;
 }
@@ -17,19 +17,19 @@ class OrientationNorth implements Orientation {
 
   private constructor() {}
 
-  GoAhead(position: Position): Position {
+  goAhead(position: Position): Position {
     return position.incrementLatitudeExceptObstacle();
   }
 
-  Backoff(position: Position): Position {
+  backoff(position: Position): Position {
     return position.decrementLatitudeExceptObstacle();
   }
 
-  AntiClockwiseRotation(): Orientation {
+  antiClockwiseRotation(): Orientation {
     return Orientations.West;
   }
 
-  ClockwiseRotation(): Orientation {
+  clockwiseRotation(): Orientation {
     return Orientations.East;
   }
 
@@ -43,19 +43,19 @@ class OrientationSouth implements Orientation {
 
   private constructor() {}
 
-  GoAhead(position: Position): Position {
+  goAhead(position: Position): Position {
     return position.decrementLatitudeExceptObstacle();
   }
 
-  Backoff(position: Position): Position {
+  backoff(position: Position): Position {
     return position.incrementLatitudeExceptObstacle();
   }
 
-  AntiClockwiseRotation(): Orientation {
+  antiClockwiseRotation(): Orientation {
     return Orientations.East;
   }
 
-  ClockwiseRotation(): Orientation {
+  clockwiseRotation(): Orientation {
     return Orientations.West;
   }
 
@@ -69,19 +69,19 @@ class OrientationEast implements Orientation {
 
   private constructor() {}
 
-  GoAhead(position: Position): Position {
+  goAhead(position: Position): Position {
     return position.incrementLongitudeExpectObstacle();
   }
 
-  Backoff(position: Position): Position {
+  backoff(position: Position): Position {
     return position.decrementLongitudeExpectObstacle();
   }
 
-  AntiClockwiseRotation(): Orientation {
+  antiClockwiseRotation(): Orientation {
     return Orientations.North;
   }
 
-  ClockwiseRotation(): Orientation {
+  clockwiseRotation(): Orientation {
     return Orientations.South;
   }
 
@@ -95,19 +95,19 @@ class OrientationWest implements Orientation {
 
   private constructor() {}
 
-  GoAhead(position: Position): Position {
+  goAhead(position: Position): Position {
     return position.decrementLongitudeExpectObstacle();
   }
 
-  Backoff(position: Position): Position {
+  backoff(position: Position): Position {
     return position.incrementLongitudeExpectObstacle();
   }
 
-  AntiClockwiseRotation(): Orientation {
+  antiClockwiseRotation(): Orientation {
     return Orientations.South;
   }
 
-  ClockwiseRotation(): Orientation {
+  clockwiseRotation(): Orientation {
     return Orientations.North;
   }
 

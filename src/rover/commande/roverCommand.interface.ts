@@ -1,5 +1,5 @@
 import { RoverInterface } from "../rover.interface";
 
-export interface roverCommand {
+export interface roverCommandInterface {
   executeOn(rover: RoverInterface): RoverInterface;
 }
