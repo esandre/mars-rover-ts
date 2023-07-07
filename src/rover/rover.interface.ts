@@ -5,7 +5,7 @@ export interface RoverInterface {
 
   turnLeft(): RoverWithState;
 
-  GoAhead(): RoverWithState;
+  goAhead(): RoverWithState;
 
-  BackOff(): RoverWithState;
+  backOff(): RoverWithState;
 }

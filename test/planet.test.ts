@@ -1,9 +1,8 @@
 import { RoverBuilder } from "./utilities/rover.builder";
 import { CartesianData } from "./utilities/cartesianData";
-import { Orientation } from "../src/topology/orientations";
+import { Orientation } from "../src/topology/orientation";
 import { TestPrimitives } from "./utilities/testPrimitives";
 import { PositionBuilder } from "./utilities/position.builder";
-import { WholeNumber } from "../src/math/WholeNumber";
 import { PlanetBuilder } from "./utilities/planete.builder";
 
 const each = require("jest-each").default;
@@ -36,15 +35,15 @@ describe("FEATURE Planète", () => {
       const originalPosition = new PositionBuilder()
         .haveForCoordinates(startLatitude, startLongitude)
         .onPlanet(planet)
-        .Build();
+        .build();
 
       let rover = new RoverBuilder()
         .havingForOrientation(orientation)
         .havingForPosition(originalPosition)
-        .Build();
+        .build();
 
       for (let i = 0; i < size; i++) {
-        rover = rover.GoAhead();
+        rover = rover.goAhead();
       }
 
       expect(rover.Position).toStrictEqual(originalPosition);

@@ -1,7 +1,7 @@
 import { RoverBuilder } from "./utilities/rover.builder";
 import { TestPrimitives } from "./utilities/testPrimitives";
 import { CartesianData } from "./utilities/cartesianData";
-import { Orientation } from "../src/topology/orientations";
+import { Orientation } from "../src/topology/orientation";
 import { PositionBuilder } from "./utilities/position.builder";
 import { PlanetBuilder } from "../src/topology/planet.builder";
 
@@ -24,14 +24,14 @@ describe("FEATURE Obstacles", () => {
       const startPosition = new PositionBuilder()
         .origin()
         .onPlanet(planet)
-        .Build();
+        .build();
 
       const rover = new RoverBuilder()
         .havingForPosition(startPosition)
         .havingForOrientation(orientation)
-        .Build();
+        .build();
 
-      const finalState = rover.GoAhead();
+      const finalState = rover.goAhead();
 
       expect(finalState.Position).toEqual(startPosition);
     }

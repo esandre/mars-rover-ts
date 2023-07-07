@@ -1,4 +1,4 @@
-import { Orientations } from "../../src/topology/orientations";
+import { Orientations } from "../../src/topology/orientation";
 
 export class TestPrimitives {
   public static readonly Orientations = [

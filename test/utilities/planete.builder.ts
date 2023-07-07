@@ -49,10 +49,10 @@ class EmptyToroidalPlanet implements Planet {
 
   dependingOnAccessibility<T>(
     point: Point,
-    actionSiObstacle: () => T,
-    actionSiLibre: () => T
+    actionIfObstacle: () => T,
+    actionIfFree: () => T
   ): T {
-    return actionSiLibre();
+    return actionIfFree();
   }
 }
 

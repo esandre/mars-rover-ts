@@ -1,11 +1,11 @@
-import { roverCommand } from "./RoverCommand";
+import { roverCommandInterface } from "./roverCommand.interface";
 import { SimpleCommand } from "./SimpleCommand";
 import { RoverInterface } from "../rover.interface";
 import { CommandEmpty } from "./CommandEmpty";
 
-export class CommandComplex implements roverCommand {
+export class CommandComplex implements roverCommandInterface {
   private readonly _firstCommand: SimpleCommand;
-  private readonly _next: roverCommand = new CommandEmpty();
+  private readonly _next: roverCommandInterface = new CommandEmpty();
 
   public constructor(command: string) {
     this._firstCommand = new SimpleCommand(command[0]);

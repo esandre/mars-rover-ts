@@ -1,4 +1,4 @@
-import { Orientation } from "../topology/orientations";
+import { Orientation } from "../topology/orientation";
 import { Position } from "../geometry/position";
 import { RoverInterface } from "./rover.interface";
 
@@ -13,29 +13,33 @@ export class RoverWithState implements RoverInterface {
 
   public turnRight(): RoverWithState {
     return new RoverWithState(
-      this.Orientation.ClockwiseRotation(),
+      this.Orientation.clockwiseRotation(),
       this.Position
     );
   }
 
   public turnLeft(): RoverWithState {
     return new RoverWithState(
-      this.Orientation.AntiClockwiseRotation(),
+      this.Orientation.antiClockwiseRotation(),
       this.Position
     );
   }
 
-  public GoAhead(): RoverWithState {
+  public goAhead(): RoverWithState {
     return new RoverWithState(
       this.Orientation,
-      this.Orientation.GoAhead(this.Position)
+      this.Orientation.goAhead(this.Position)
     );
   }
 
-  public BackOff(): RoverWithState {
+  public backOff(): RoverWithState {
     return new RoverWithState(
       this.Orientation,
-      this.Orientation.Backoff(this.Position)
+      this.Orientation.backoff(this.Position)
     );
+  }
+
+  public getCurrentPosition(): Position {
+    return this.Position;
   }
 }

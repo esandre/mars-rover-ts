@@ -6,7 +6,7 @@ import { WholeNumber } from "../../src/math/WholeNumber";
 
 export class PositionBuilder {
   static origin(): Position {
-    return new PositionBuilder().Build();
+    return new PositionBuilder().build();
   }
 
   private _latitude: WholeNumber = WholeNumber.Zero;
@@ -22,7 +22,7 @@ export class PositionBuilder {
     return this;
   }
 
-  Build(): Position {
+  build(): Position {
     return new Position(
       new Point(this._latitude, this._longitude),
       this._planet

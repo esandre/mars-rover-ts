@@ -1,4 +1,4 @@
-import { Orientation, Orientations } from "../src/topology/orientations";
+import { Orientation, Orientations } from "../src/topology/orientation";
 import { RoverBuilder } from "./utilities/rover.builder";
 
 const each = require("jest-each").default;
@@ -18,7 +18,7 @@ describe("FEATURE Rotation", () => {
       "QUAND il tourne à droite %s fois " +
       "ALORS son orientation est %s",
     (init: Orientation, countNumber: number, final: Orientations) => {
-      let rover = new RoverBuilder().havingForOrientation(init).Build();
+      let rover = new RoverBuilder().havingForOrientation(init).build();
 
       for (let rotations = 0; rotations < countNumber; rotations++) {
         rover = rover.turnRight();
@@ -42,7 +42,7 @@ describe("FEATURE Rotation", () => {
       "QUAND il tourne à gauche %s fois " +
       "ALORS son orientation est %s",
     (init: Orientation, countNumber: number, final: Orientations) => {
-      let rover = new RoverBuilder().havingForOrientation(init).Build();
+      let rover = new RoverBuilder().havingForOrientation(init).build();
 
       let orientationRover: Orientations = init;
       for (let rotations = 0; rotations < countNumber; rotations++) {

@@ -1,7 +1,7 @@
 import { RoverBuilder } from "./utilities/rover.builder";
 import { RoverInterpreter } from "../src/interpreter/roverInterpreter";
 import { CartesianData } from "./utilities/cartesianData";
-import { Orientation } from "../src/topology/orientations";
+import { Orientation } from "../src/topology/orientation";
 import { TestPrimitives } from "./utilities/testPrimitives";
 import { generateCombinations } from "./utilities/generateCombinations";
 import { PositionBuilder } from "./utilities/position.builder";
@@ -37,18 +37,18 @@ describe("FEATURE Interpreter", () => {
     (latitude: number, longitude: number) => {
       const commonStartPosition = new PositionBuilder()
         .haveForCoordinates(latitude, longitude)
-        .Build();
+        .build();
 
       let testRover = new RoverBuilder()
         .havingForPosition(commonStartPosition)
-        .Build();
+        .build();
       const interpretedRover = new RoverBuilder()
         .havingForPosition(commonStartPosition)
-        .Build();
+        .build();
       let interpreter = new RoverInterpreter(interpretedRover);
 
       interpreter = interpreter.Interpreter(new SimpleCommand("A"));
-      testRover = testRover.GoAhead();
+      testRover = testRover.goAhead();
 
       expect(interpreter).toEqual(new RoverInterpreter(testRover)); // Instanciation obligatoire en raison du systéme d'égalité trop strict de TS
     }
@@ -62,18 +62,18 @@ describe("FEATURE Interpreter", () => {
     (latitude: number, longitude: number) => {
       const commonStartPosition = new PositionBuilder()
         .haveForCoordinates(latitude, longitude)
-        .Build();
+        .build();
 
       let testRover = new RoverBuilder()
         .havingForPosition(commonStartPosition)
-        .Build();
+        .build();
       const interpretedRover = new RoverBuilder()
         .havingForPosition(commonStartPosition)
-        .Build();
+        .build();
       let interpreter = new RoverInterpreter(interpretedRover);
 
       interpreter = interpreter.Interpreter(new SimpleCommand("R"));
-      testRover = testRover.BackOff();
+      testRover = testRover.backOff();
 
       expect(interpreter).toEqual(new RoverInterpreter(testRover)); // Instanciation obligatoire en raison du systéme d'égalité trop strict de TS
     }
@@ -87,10 +87,10 @@ describe("FEATURE Interpreter", () => {
     (startOrientation: Orientation) => {
       let testRover = new RoverBuilder()
         .havingForOrientation(startOrientation)
-        .Build();
+        .build();
       const interpretedRover = new RoverBuilder()
         .havingForOrientation(startOrientation)
-        .Build();
+        .build();
       let interpreter = new RoverInterpreter(interpretedRover);
 
       interpreter = interpreter.Interpreter(new SimpleCommand("D"));
@@ -108,10 +108,10 @@ describe("FEATURE Interpreter", () => {
     (startOrientation: Orientation) => {
       let testRover = new RoverBuilder()
         .havingForOrientation(startOrientation)
-        .Build();
+        .build();
       const interpretedRover = new RoverBuilder()
         .havingForOrientation(startOrientation)
-        .Build();
+        .build();
       let interpreter = new RoverInterpreter(interpretedRover);
 
       interpreter = interpreter.Interpreter(new SimpleCommand("G"));
@@ -127,7 +127,7 @@ describe("FEATURE Interpreter", () => {
       "QUAND on lui envoie une commande invalide " +
       "ALORS une Exception est lancée",
     (invalidCommand: string) => {
-      const interpreter = new RoverInterpreter(new RoverBuilder().Build());
+      const interpreter = new RoverInterpreter(new RoverBuilder().build());
 
       const commandResult = () =>
         interpreter.Interpreter(new CommandComplex(invalidCommand));
@@ -158,14 +158,14 @@ describe("FEATURE Commandes Multiples", () => {
     ) => {
       const commonStartPosition = new PositionBuilder()
         .haveForCoordinates(latitude, longitude)
-        .Build();
+        .build();
 
       const configurationCommune = new RoverBuilder()
         .havingForPosition(commonStartPosition)
         .havingForOrientation(orientation);
 
-      const testRover = configurationCommune.Build();
-      const testedRover = configurationCommune.Build();
+      const testRover = configurationCommune.build();
+      const testedRover = configurationCommune.build();
 
       let testedInterpreter = new RoverInterpreter(testedRover);
       let witnessInterpreter = new RoverInterpreter(testRover);
