@@ -1,6 +1,6 @@
-import {Position} from "../../src/geometrie/position";
+import {Position} from "../../src/math/geometrie/position";
 import {PlanèteInfinieVide} from "./planèteInfinieVide";
-import {Point} from "../../src/geometrie/point";
+import {Point} from "../../src/math/geometrie/point";
 import {Planète} from "../../src/topologie/planète.interface";
 import {Entier} from "../../src/math/Entier";
 

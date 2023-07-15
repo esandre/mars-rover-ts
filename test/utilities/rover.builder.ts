@@ -1,5 +1,5 @@
 import {Orientations, Orientation} from "../../src/topologie/orientations";
-import {Position} from "../../src/geometrie/position";
+import {Position} from "../../src/math/geometrie/position";
 import {PositionBuilder} from "./position.builder";
 import {RoverWithState} from "../../src/rover/roverWithState";
 

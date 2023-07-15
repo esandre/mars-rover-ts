@@ -1,4 +1,4 @@
-import {Position} from "../geometrie/position.ts";
+import {Position} from "../math/geometrie/position.ts";
 
 export interface Orientation {
     RotationHoraire() : Orientation;
